@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Inferno-debug</title>
+
+    <meta name="description" content="">
+
+    <% htmlWebpackPlugin.files.css.forEach(function (filePath) { %>
+      <style>
+        <%= compilation.assets[filePath.substr(htmlWebpackPlugin.files.publicPath.length)].source() %>
+      </style>
+    <% }) %>
+
+  <body>
+    <main id="root"></main>
+
+    <% htmlWebpackPlugin.files.js.forEach(function (filePath) { %>
+      <script src="<%= filePath %>" defer></script>
+    <% }) %>
